@@ -75,4 +75,11 @@ Pour se connecter, utiliser votre username GitHub et le mot de passe initial `me
 
 ### Création de l'application
 
+Depuis l'interface d'ArgoCD, créer une nouvelle application en suivant les consignes ci-dessous :
+
+![app1](app1.jpg)
+
+![app2](app2.jpg)
+
+![app3](app3.jpg)
 
