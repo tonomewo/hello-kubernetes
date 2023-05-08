@@ -125,3 +125,11 @@ Pour réconcilier, cliquer sur `Sync` puis `Synchronize`.
 Le statut est mis à jour :
 
 ![resync](resync.jpg)
+
+Et l'application égalemernt :
+
+![new_app](new_app.jpg)
+
+### Fin et destruction
+
+Fin de l'exercice, lancez un `delete` de l'application pour supprimer les objets Kubernetes crées dans le cluster.
