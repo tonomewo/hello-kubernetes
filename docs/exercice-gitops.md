@@ -16,6 +16,9 @@ Les pré-requis suivants sont nécessaires :
 - Outil de VCS installé (VSCode ou autre)
 - Fork du [repo](https://github.com/smontri-mewo/hello-kubernetes.git)
 
+```
+Attention : DockerHub n'accepte pas les - dans le nom de repository
+```
 
 ## Pipeline de build de l'image
 
