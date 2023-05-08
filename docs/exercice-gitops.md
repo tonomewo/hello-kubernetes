@@ -43,7 +43,7 @@ Ces secrets doivent être crée via Settings | Secrets and variables | Actions
 
 ### Configuration du build
 
-Modifier la valeur de `CONTAINER_IMAGE` dans le workflow `build-and-push-container-image` pour matcher avec 
+Modifier la valeur de `CONTAINER_IMAGE` dans le workflow `build-and-push-container-image` pour correspondre à votre registre et repository docker !
 
 ### Déclenchement du build
 

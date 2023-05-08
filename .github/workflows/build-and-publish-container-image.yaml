@@ -8,11 +8,13 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    if: startsWith(github.ref, 'refs/tags/v')
+    #if: startsWith(github.ref, 'refs/tags/v')
 
     env:
       CONTAINER_REGISTRY: docker.io
       CONTAINER_IMAGE: smontrimewo/hello-kubernetes
+      GIT_REPOSITORY: 
+
 
     steps:
 
@@ -50,4 +52,9 @@ jobs:
           docker push $IMAGE:$IMAGE_VERSION
           docker push $IMAGE:$IMAGE_MAJOR_VERSION
           docker push $IMAGE:$IMAGE_MAJOR_VERSION.$IMAGE_MINOR_VERSION
+      
+      - name: Update helm chart
+        run: |
+          echo "$GITHUB_ENV"
+
 
