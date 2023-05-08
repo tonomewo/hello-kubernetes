@@ -92,3 +92,15 @@ L'application est visible depuis la console dans la liste des applications :
 Et en cliquant dessus on accès au détail :
 
 ![app5](app5.jpg)
+
+On constate que celle-ci n'est pas synchronisée, Git à jour mais aucune application déployée dans le cluster.
+
+### Première synchronisation
+
+Pour synchroniser l'application, un clic sur `Sync` et puis `Synchronize`.
+
+![sync](sync.jpg)
+
+Une fois réconciliée, l'application apparaît dans un état synchronisé.
+
+![synced](synced.jpg)
