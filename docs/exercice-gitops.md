@@ -59,8 +59,7 @@ Puis il s'agit de faire un commit et un push de la modification.
 
 ### Résultat dans Dockerhub
 
-
-
+![dockerhub](dockerhub.jpg)
 
 ## Déploiement et synchronisation de l'application depuis ArgoCD
 
@@ -104,3 +103,14 @@ Pour synchroniser l'application, un clic sur `Sync` et puis `Synchronize`.
 Une fois réconciliée, l'application apparaît dans un état synchronisé.
 
 ![synced](synced.jpg)
+
+L'application est accessible via l'url (LoadBalancer). Une fois l'application déployée, demandez l'adresse pour accéder à l'application.
+
+![app_initiale](app_initiale.jpg)
+
+### Modification de l'application
+
+Nous allons modifier le message affiché dans la page web de l'app.
+
+![app_initiale](app_initiale.jpg)
+
