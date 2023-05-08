@@ -15,7 +15,7 @@ jobs:
       GIT_USER: smontri-mewo
       CONTAINER_REGISTRY: docker.io
       CONTAINER_IMAGE: smontrimewo/hello-kubernetes
-      GIT_REPOSITORY: https://github.com/smontri-mewo/hello-kubernetes
+      GIT_REPOSITORY: git@github.com:smontri-mewo/hello-kubernetes.git
       CD_CHART_REPO: deploy/helm/hello-kubernetes
       CD_MANIFEST_FILE: Chart.yaml
 
@@ -60,6 +60,11 @@ jobs:
       - name: Update helm chart
         run: |
           echo "$GITHUB_ENV"
+          mkdir -p /root/.ssh
+          echo "$SSH_PRIVATE_KEY" > /root/.ssh/id_rsa
+          ssh-keyscan -H github.com > /root/.ssh/known_hosts
+          chmod 600 /root/.ssh/id_rsa
+
           git config --global user.name $GIT_USER
           git config --global user.email $GIT_USER"@mewo-campus.fr"
           git clone --single-branch --branch main $GIT_REPOSITORY
