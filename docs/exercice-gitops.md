@@ -110,7 +110,18 @@ L'application est accessible via l'url (LoadBalancer). Une fois l'application d�
 
 ### Modification de l'application
 
-Nous allons modifier le message affiché dans la page web de l'app.
+Nous allons modifier le message affiché dans la page web de l'app, en mettant à jour la valeur de `message` dans le fichier `values.yaml`.
 
-![app_initiale](app_initiale.jpg)
+![modification](modification.jpg)
 
+Dans l'interface d'ArgoCD, l'application apparaît comme désynchronisée, le repo Git et l'application déployée sont différentes.
+
+![desync](desync.jpg)
+
+Pour réconcilier, cliquer sur `Sync` puis `Synchronize`.
+
+![desync2](desync2.jpg)
+
+Le statut est mis à jour :
+
+![resync](resync.jpg)
