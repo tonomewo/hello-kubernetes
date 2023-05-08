@@ -16,7 +16,7 @@ deployment:
   container:
     image:
       repository: "smontrimewo/hello-kubernetes"
-      tag: "2.0" # uses chart appVersion if not provided
+      tag: "" # uses chart appVersion if not provided
       pullPolicy: IfNotPresent
     port: 8080
 
