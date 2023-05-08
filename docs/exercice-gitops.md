@@ -12,67 +12,69 @@ Cet exercice vous permet de déployer une application `hello-kubernetes` en cré
 Les pré-requis suivants sont nécessaires :
 
 - Docker Engine ou Docker Desktop installé sur votre poste
-- Création d'un compte [DockerHub](https://hub.docker.com/)
-- Outil de VCS installé (VSCode)
-- [Docker cli](https://www.docker.com/)
-- Container registry
+- Création d'un compte [DockerHub](https://hub.docker.com/) (c'est gratuit)
+- Outil de VCS installé (VSCode ou autre)
+- Fork du [repo](https://github.com/smontri-mewo/hello-kubernetes.git)
 
-If you are using the [VS Code Remote Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) based development environment, all of the prerequisites will be available in the terminal.
 
 ## Pipeline de build de l'image
 
+Le pipeline `GitHub Actions` est déjà crée dans le repo.
+
 The `Makefile` in the root folder of the repo provides the functionality to allow you to build and push your own `hello-kubernetes` container image.
 
-### Environment variables
+### Secrets à créer
 
-| Name | Default | Description | 
-| ---- | ------- | ----------- |
-| REGISTRY | docker.io | The container registry to push the images to. |
-| REPOSITORY | paulbouwer | The repository (or hierarchy) within the container registry where the image will be located. |
-| IMAGE_VERSION | the version in src/app/package.json | The image version (label) to use for the built and pushed container images. |
+Ces secrets doivent être crée via Settings | Secrets and variables | Actions 
 
-### Targets
+
+| Name | Description | 
+| ---- | ----------- |
+| DOCKERHUB_USERNAME | Utilisateur pour se connecter à DockerHub |
+| DOCKERHUB_PASSWORD | Mot de passe pour se connecter à DockerHub |
+
+
+![Hello world! from the hello-kubernetes image](secrets.jpg)
+
+### Variables
 
 | Name | Description |
 | ---- | ----------- |
-| build-image-linux | Build the `hello-kubernetes` container image for the `linux/amd64` architecture. |
-| push-image | Push the `hello-kubernetes` container image to the defined registry. |
+| IMAGE_VERSION | version de l'image dans src/app/package.json |
+
+### Configuration du build
+
+Modifier la valeur de `CONTAINER_IMAGE` dans le workflow `build-and-push-container-image` pour matcher avec 
+
+### Déclenchement du build
+
+Pour déclencher le build, nous allons créer une nouvelle version de l'application en modifiant la version de l'application dans le fichier `package.json`.
+
+![app versio](package-json.jpg)
+
+Puis il s'agit de faire un commit et un push de la modification.
+
+### Le pipeline
+
+![pipeline](pipeline.jpg)
+
+### Résultat dans Dockerhub
+
+
+
 
 ## Déploiement et synchronisation de l'application depuis ArgoCD
 
-You can build the `hello-kubernete` container image as follows:
+### Connexion à ArgoCD
 
-```bash
-# Build the paulbouwer/hello-kubernetes:$version image
-make build-image-linux
+L'interface d'ArgoCD est disponible ici : [ArgoCD](https://52.188.42.67)
 
-# Build the paulbouwer.azurecr.io/paulbouwer/hello-kubernetes:$version image
-export REGISTRY=paulbouwer.azurecr.io
-make build-image-linux
-```
+Pour se connecter, utiliser votre username GitHub et le mot de passe initial `mewomewo`.
 
-## Pushing a container image
+![argo login](argologin.jpg)
 
-You can push your built `hello-kubernetes` container image to the defined registry as follows:
 
-```bash
-# Push paulbouwer/hello-kubernetes:$version to docker hub.
-# Will tag $majorversion and $majorversion.$minorversion.
-#
-# Example: The container image will be tagged as follows for $version=1.10.0
-#   - paulbouwer/hello-kubernetes:1.10.0
-#   - paulbouwer/hello-kubernetes:1.10
-#   - paulbouwer/hello-kubernetes:1
-make push-image
+### Création de l'application
 
-# REGISTRY=paulbouwer.azurecr.io
-# Push paulbouwer.azurecr.io/paulbouwer/hello-kubernetes:$version to paulbouwer.azurecr.io.
-# Will tag $majorversion and $majorversion.$minorversion.
-#
-# Example: The container image will be tagged as follows for $version=1.10.0
-#   - paulbouwer.azurecr.io/paulbouwer/hello-kubernetes:1.10.0
-#   - paulbouwer.azurecr.io/paulbouwer/hello-kubernetes:1.10
-#   - paulbouwer.azurecr.io/paulbouwer/hello-kubernetes:1
-export REGISTRY=paulbouwer.azurecr.io
-make push-image
-```
+
+
