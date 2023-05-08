@@ -11,9 +11,13 @@ jobs:
     #if: startsWith(github.ref, 'refs/tags/v')
 
     env:
+      DOCKER_USER: smontrimewo
+      GIT_USER: smontri-mewo
       CONTAINER_REGISTRY: docker.io
-      CONTAINER_IMAGE: smontrimewo/hello-kubernetes
-      GIT_REPOSITORY: 
+      CONTAINER_IMAGE: $USERNAME/hello-kubernetes
+      GIT_REPOSITORY: https://github.com/$GIT_USER/hello-kubernetes
+      CD_CHART_REPO: deploy/helm/hello-kubernetes
+      CD_MANIFEST_FILE: Chart.yaml
 
 
     steps:
@@ -56,5 +60,10 @@ jobs:
       - name: Update helm chart
         run: |
           echo "$GITHUB_ENV"
-
-
+          git config --global user.name $GIT_USER
+          git config --global user.email $GIT_USER"@mewo-campus.fr"
+          git clone --single-branch --branch main $CD_GIT_REPOSITORY
+          cd $CD_CHART_REPO
+          docker run --rm -v ${PWD}:/workdir mikefarah/yq:3.2.1 yq write --inplace --verbose $CD_MANIFEST_FILE appVersion $IMAGE_VERSION
+          cat $CD_MANIFEST_FILE
+          git commit -am "update app version" && git push origin main
