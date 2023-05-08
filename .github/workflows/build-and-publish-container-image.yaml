@@ -1,8 +1,6 @@
 name: "When a release tag is created, build and publish a new version of the container image"
 
-on:
-
-  create
+on: push
 
 jobs:
 
