@@ -133,3 +133,5 @@ Et l'application égalemernt :
 ### Fin et destruction
 
 Fin de l'exercice, lancez un `delete` de l'application pour supprimer les objets Kubernetes crées dans le cluster.
+
+![delete](delete.jpg)
