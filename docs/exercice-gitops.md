@@ -83,3 +83,12 @@ Depuis l'interface d'ArgoCD, créer une nouvelle application en suivant les cons
 
 ![app3](app3.jpg)
 
+Pour finaliser la création de l'application, un petit clic sur `Create`.
+
+L'application est visible depuis la console dans la liste des applications :
+
+![app4](app4.jpg)
+
+Et en cliquant dessus on accès au détail :
+
+![app5](app5.jpg)
