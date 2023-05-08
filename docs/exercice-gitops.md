@@ -1,7 +1,7 @@
 # Exercice GitOps
 
 
-Cet exercice vous permet de déployer une application `hello-kubernetes` en créeant l'image Docker 
+Cet exercice vous permet de déployer une application `hello-kubernetes` en 2 étapes : 
 
 1. Création de l'image Docker et upload dans DockerHub
 2. Création de l'application dans ArgoCD et synchronisation
@@ -20,10 +20,9 @@ Les pré-requis suivants sont nécessaires :
 ## Pipeline de build de l'image
 
 Le pipeline `GitHub Actions` est déjà crée dans le repo.
+Il s'agit du du workflow `build-and-push-container-image`.
 
-The `Makefile` in the root folder of the repo provides the functionality to allow you to build and push your own `hello-kubernetes` container image.
-
-### Secrets à créer
+### Secrets
 
 Ces secrets doivent être crée via Settings | Secrets and variables | Actions 
 
@@ -75,6 +74,5 @@ Pour se connecter, utiliser votre username GitHub et le mot de passe initial `me
 
 
 ### Création de l'application
-
 
 
