@@ -1,5 +1,5 @@
 # Provide a custom message
-message: "Bravo l'équipe Mewo"
+message: ""
 
 # Remember to set service.type=ClusterIP if you are using an ingress
 ingress:
