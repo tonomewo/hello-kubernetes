@@ -1,5 +1,5 @@
 # Provide a custom message
-message: "Mewo ❤️ Kubernetes"
+message: ""
 
 # Remember to set service.type=ClusterIP if you are using an ingress
 ingress:
