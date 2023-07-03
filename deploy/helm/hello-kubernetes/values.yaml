@@ -1,5 +1,5 @@
 # Provide a custom message
-message: "Test 123  stop me"
+message: "stop me"
 
 # Remember to set service.type=ClusterIP if you are using an ingress
 ingress:
